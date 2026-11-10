@@ -1,23 +1,23 @@
-# Kiosk, cihaz ve saha yazılımları
+# Kiosk, ödeme ve saha sistemleri
 
-Bir kioskun ödeme ekranından üretim istasyonunda kart programlamaya, sahadaki bir sayacın verisini sunucuya taşımaya kadar farklı yazılımlar geliştirdim. İşin bir ucunda kullanıcının dokunduğu ekran, diğer ucunda cihazın gönderdiği baytlar var.
+Bir kioskun ödeme akışını, kart okuyucuyla haberleşen yazılımı, üretim istasyonunda cihazı programlayan aracı ve sahadan gelen ölçümleri işleyen servisi geliştirdim. Çalışmalarım masaüstü ve mobil uygulamaları, donanım protokollerini ve arka uç sistemlerini kapsıyor.
 
-### Kiosklar ve kart okuyucuları
+## Kiosklar, tahsilat ve POS
 
-Windows kioskları ve tabletler için WPF ve Windows Forms ile ödeme, QR, işlem geçmişi ve yardım ekranları geliştirdim. Kart okuyucularıyla haberleşme tarafında C++ ve Windows’un akıllı kart arayüzüyle de çalıştım.
+WPF ve Windows Forms ile kiosk ve tablet uygulamaları geliştirdim. Tahsilat, kartlı ödeme, karta kredi yükleme, QR ve işlem geçmişi gibi kullanıcı akışları üzerinde çalıştım. Bu akışların arkasında POS terminalleriyle mesaj alışverişi yapan entegrasyonlar, ödeme senaryolarını deneyen test araçları ve kiosk API’leri de var.
 
-### Üretim istasyonları ve cihaz testleri
+## Kart okuyucuları ve cihaz protokolleri
 
-USB üzerinden kart programlayan, firmware yükleyip sürümü doğrulayan üretim araçları geliştirdim. BLE/GATT üzerinden cihaz keşfi, komut gönderme ve yanıt doğrulama akışları için masaüstü test araçları ve komut satırı uygulamaları yazdım.
+C# ve C++ ile kart okuyucu entegrasyonları, cihaz kütüphaneleri ve test araçları geliştirdim. USB ve PC/SC üzerinden akıllı kartlarla haberleşme, kart komutları ve ham yanıtları çözümleme üzerine çalıştım. BLE/GATT tarafında cihaz keşfi, komut gönderme ve yanıt doğrulama akışları yazdım.
 
-### Mobil uygulamalar ve saha operasyonları
+## Üretim istasyonları ve mobil saha araçları
 
-.NET MAUI ile Android ve iOS’ta sayaçla doğrudan haberleşen uygulamalar geliştirdim. Sahadaki iş emirleri, montaj kayıtları ve cihaz güncellemeleri bu işin parçası. React Native ve TypeScript ile kayıtlarını cihazda tutan kişisel bir maliyet hesaplama uygulaması da geliştirdim.
+USB üzerinden kart programlayan, firmware yükleyip sürümü doğrulayan Windows araçları ve komut satırı uygulamaları geliştirdim. .NET MAUI ile Android ve iOS’ta sahadaki sayaçla doğrudan haberleşen, iş emirlerini ve montaj kayıtlarını işleyen, cihaz güncellemesi yapabilen uygulamalar üzerinde çalıştım.
 
-### IoT altyapısı ve arka uç
+## Web uygulamaları ve IoT altyapısı
 
-Sigfox, LoRaWAN ve BLE ağ geçitlerinden gelen ikili paketleri çözümleyen .NET servisleri üzerinde çalıştım. Telemetriyi kalıcı kuyruğa alıp hedef sistemlere ileten ve bağlantı hatasından sonra teslimata devam eden akışlar geliştirdim.
+ASP.NET Core ve Blazor ile yönetim ekranları, veri düzenleme araçları ve iş uygulamalarını birbirine bağlayan API’ler geliştirdim. Sigfox, LoRaWAN ve BLE ağ geçitlerinden gelen ikili paketleri çözümleyen .NET servislerinde, telemetriyi kalıcı kuyruğa alma ve bağlantı hatasından sonra teslimatı sürdürme akışları üzerinde çalıştım.
 
-### Kütüphaneler ve doğrulama
+## Kütüphaneler, testler ve kişisel ürünler
 
-Tekrar kullanılan .NET bileşenleri, Modbus RTU/TCP ve MQTT paket işleme katmanları, BLE simülasyonları ve gerçek cihazla çalışan test araçları geliştiriyorum. Özellikle cihazın bağlantısı koptuğunda, bir yazma yarıda kaldığında veya aynı işlem tekrar geldiğinde sistemin davranışını test ediyorum.
+Tekrar kullanılabilen .NET bileşenleri, Modbus RTU/TCP ve MQTT paket işleme katmanları, cihaz simülasyonları ve protokol testleri geliştiriyorum. Kişisel çalışmalarım arasında React Native ve TypeScript ile geliştirdiğim, kayıtlarını cihazda tutan bir yakıt ve enerji maliyeti hesaplayıcısı da var.
