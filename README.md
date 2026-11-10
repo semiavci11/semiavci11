@@ -1,25 +1,23 @@
-<h1 align="center">Semi Avcı</h1>
+# Kiosk, cihaz ve saha yazılımları
 
-<p align="center"><strong>Donanımla konuşan yazılımlar geliştiriyorum.</strong></p>
+Bir kioskun ödeme ekranından üretim istasyonunda kart programlamaya, sahadaki bir sayacın verisini sunucuya taşımaya kadar farklı yazılımlar geliştirdim. İşin bir ucunda kullanıcının dokunduğu ekran, diğer ucunda cihazın gönderdiği baytlar var.
 
-<p align="center">
-  Kart okuyucusundan gelen veriyi bir uygulamada kullanmak, bir BLE cihazını üretim hattında test etmek ya da sahadaki bir cihazdan gelen paketi sunucuda çözümlemek. C# ve .NET ile bu akışların cihaz, uygulama ve servis tarafında çalışıyorum.
-</p>
+### Kiosklar ve kart okuyucuları
 
-<p align="center">
-  <img alt="C# / .NET" src="https://img.shields.io/badge/C%23%20%2F%20.NET-512BD4?style=flat-square">
-  <img alt="BLE / GATT" src="https://img.shields.io/badge/BLE%20%2F%20GATT-0068B5?style=flat-square">
-  <img alt="IoT" src="https://img.shields.io/badge/IoT-007F73?style=flat-square">
-  <img alt=".NET MAUI" src="https://img.shields.io/badge/.NET%20MAUI-7248B9?style=flat-square">
-</p>
+Windows kioskları ve tabletler için WPF ve Windows Forms ile ödeme, QR, işlem geçmişi ve yardım ekranları geliştirdim. Kart okuyucularıyla haberleşme tarafında C++ ve Windows’un akıllı kart arayüzüyle de çalıştım.
 
-<p align="center"><a href="https://www.linkedin.com/in/semi-avci-0b8361176">LinkedIn</a></p>
+### Üretim istasyonları ve cihaz testleri
 
-## Neler geliştiriyorum?
+USB üzerinden kart programlayan, firmware yükleyip sürümü doğrulayan üretim araçları geliştirdim. BLE/GATT üzerinden cihaz keşfi, komut gönderme ve yanıt doğrulama akışları için masaüstü test araçları ve komut satırı uygulamaları yazdım.
 
-- **Kart okuyucu ve cihaz entegrasyonları.** Karttan veri okuyan, cihazlarla USB veya Bluetooth üzerinden haberleşen ve gelen veriyi uygulamada işleyen yazılımlar.
-- **BLE test ve üretim araçları.** GATT üzerinden cihaz keşfi, komut alışverişi ve tanılama. Üretim istasyonlarında firmware yükleme, sürüm doğrulama ve test otomasyonu.
-- **IoT haberleşmesi.** Sigfox ve LoRaWAN cihazlarından gelen telemetriyi alan ağ geçitleri ve servisler. İkili veri paketlerini çözümleme, cihaz komutları ve yeniden deneme akışları.
-- **Mobil, masaüstü ve web uygulamaları.** .NET MAUI ile mobil uygulamalar, Windows için cihaz araçları ve ASP.NET Core ile cihaz verisini uygulamalara taşıyan servisler.
+### Mobil uygulamalar ve saha operasyonları
 
-Bir cihaz entegrasyonunu geliştirirken bağlantı koptuğunda, yanıt geciktiğinde veya bir işlem yarıda kaldığında sistemin nasıl davranacağını da tasarlıyorum. Protokol testleri, cihaz simülasyonu ve gerçek donanımla doğrulama bu işin parçası.
+.NET MAUI ile Android ve iOS’ta sayaçla doğrudan haberleşen uygulamalar geliştirdim. Sahadaki iş emirleri, montaj kayıtları ve cihaz güncellemeleri bu işin parçası. React Native ve TypeScript ile kayıtlarını cihazda tutan kişisel bir maliyet hesaplama uygulaması da geliştirdim.
+
+### IoT altyapısı ve arka uç
+
+Sigfox, LoRaWAN ve BLE ağ geçitlerinden gelen ikili paketleri çözümleyen .NET servisleri üzerinde çalıştım. Telemetriyi kalıcı kuyruğa alıp hedef sistemlere ileten ve bağlantı hatasından sonra teslimata devam eden akışlar geliştirdim.
+
+### Kütüphaneler ve doğrulama
+
+Tekrar kullanılan .NET bileşenleri, Modbus RTU/TCP ve MQTT paket işleme katmanları, BLE simülasyonları ve gerçek cihazla çalışan test araçları geliştiriyorum. Özellikle cihazın bağlantısı koptuğunda, bir yazma yarıda kaldığında veya aynı işlem tekrar geldiğinde sistemin davranışını test ediyorum.
