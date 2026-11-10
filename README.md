@@ -2,65 +2,80 @@
 
 # Semi Avcı
 
+<a href="https://github.com/semiavci11">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1200&color=58A6FF&center=true&vCenter=true&width=640&lines=Silikondan+sahaya+kadar+yaz%C4%B1l%C4%B1m;Protokol%C3%BC+bayt%C4%B1na+kadar+%C3%A7%C3%B6zerim;%C3%9Cretim+hatt%C4%B1n%C4%B1+otomatikle%C5%9Ftiririm;Masa%C3%BCst%C3%BC+%C2%B7+Web+%C2%B7+Mobil+%C2%B7+G%C3%B6m%C3%BCl%C3%BC" alt="Typing SVG" />
+</a>
+
 **Yazılım Geliştirici · Gömülü Sistem Entegrasyonu · Üretim ve Saha Yazılımları**
 
-Donanımla konuşan yazılımlar yazıyorum: üretim hattında kartı programlayan istasyonlar,<br>
-sahadaki sayaçla BLE üzerinden konuşan mobil uygulamalar ve ödeme alan kiosklar.
+Bir kartın üretim hattında programlanmasından sahadaki telefonla konuşmasına,<br>
+oradan buluttaki panele kadar olan yolun tamamını yazarım.
 
 ![Inodya](https://img.shields.io/badge/Inodya-Teknoloji-1f6feb?style=flat-square)
 ![Ankara](https://img.shields.io/badge/Konum-Ankara-30363d?style=flat-square)
-![Odak](https://img.shields.io/badge/Odak-.NET%20%C2%B7%20IoT%20%C2%B7%20Donan%C4%B1m-512BD4?style=flat-square)
+![Odak](https://img.shields.io/badge/Odak-Donan%C4%B1m%20%C2%B7%20.NET%20%C2%B7%20IoT-512BD4?style=flat-square)
 
 </div>
 
 ---
 
-## Şu an üzerinde çalıştığım: Orion Üretim Platformu
+## Uçtan uca: tek kişide bütün zincir
 
-> Sayaç üretim hattını tek ekrandan yöneten web tabanlı üretim sistemi. Her istasyondaki ajan kartları programlar, kimliklerini yazar ve sonucu sunucuya bildirir.
+```mermaid
+flowchart LR
+    A["🔌 Çıplak kart<br/>STM32 / BLE SoC"] --> B["🏭 Üretim istasyonu<br/>firmware · kimlik · test"]
+    B --> C["📱 Saha<br/>BLE ile kurulum<br/>FUOTA güncelleme"]
+    C --> D["📡 Ağ<br/>Sigfox · LoRaWAN<br/>BLE gateway"]
+    D --> E["☁️ Sunucu<br/>API · kuyruk · panel"]
+    E -.->|sürüm, iş emri| B
+```
 
-- **Paralel programlama:** Bir istasyonda 5 ST-LINK kanalıyla STM32WB kartlarına aynı anda firmware, BLE yığını ve FUS yükleme; her kartın sürümü okunarak doğrulanır.
-- **Cihaz kimliği ve provisioning:** EEPROM yazımı, cihaz numarası ve Sigfox kimlik bilgisi atama; kart UID'si her adımda yeniden kontrol edilerek yanlış karta kimlik yazılması engellenir.
-- **Kendini güncelleyen istasyon ajanı:** Sunucudan imzalı paket çeker, Windows servisi olarak takas eder, başarısız olursa önceki sürüme döner.
-- **Ortak protokol çekirdeği:** Bayt sırası, çerçeve, checksum ve BLE komut kuralları tek bir test edilmiş NuGet paket ailesinde; masaüstü, web ve mobil uygulamalar aynı kaynağı kullanır.
-- **Uçtan uca teslim:** ASP.NET Core sunucu, PostgreSQL, Inno Setup kurulumları ve sürüm notlarıyla yayımlanan sürümler.
-
-![C#](https://img.shields.io/badge/C%23-.NET%2010-512BD4?style=flat-square&logo=dotnet&logoColor=white)
-![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-Blazor-5C2D91?style=flat-square&logo=blazor&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![STM32](https://img.shields.io/badge/STM32WB-ST--LINK-03234B?style=flat-square&logo=stmicroelectronics&logoColor=white)
-![BLE](https://img.shields.io/badge/BLE-GATT-0082FC?style=flat-square&logo=bluetooth&logoColor=white)
+Zincirin her halkasını ayrı ayrı biliyorum; asıl işim halkalar arasındaki kuralı **tek yerde** tutup her uygulamanın aynı kaynaktan beslenmesini sağlamak.
 
 ---
 
-## Neler yapıyorum
+## Neler yapabilirim
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 🏭 Üretim istasyonları
-USB/ST-LINK üzerinden kart programlayan, firmware yükleyip sürümü doğrulayan Windows araçları ve komut satırı uygulamaları. Donanımsız paralel simülasyon ve canlı donanım testleri.
+### 🔬 Protokolü baytına kadar çözerim
+Dokümanı eksik bir cihazla bile konuşurum. Çerçeve, checksum, bayt sırası, komut/onay akışı; **BLE GATT**, **PC/SC APDU**, **Modbus RTU/TCP**, seri port ve ham ikili paketler. Çözdüğüm kuralı testli bir pakete çevirip herkesin kullanacağı tek giriş yaparım.
 
 </td>
 <td width="50%" valign="top">
 
-### 📱 Mobil saha araçları
-.NET MAUI ile Android ve iOS'ta sayaçla BLE üzerinden doğrudan konuşan, iş emri ve montaj kaydı işleyen, cihaza kablosuz güncelleme (FUOTA) yapan uygulamalar.
+### 🏭 Üretim hattını otomatikleştiririm
+Aynı anda birden çok kartı programlayan, firmware ve radyo yığınını yükleyip sürümü doğrulayan, kimliği yazıp sonucu sunucuya bildiren istasyonlar. Hattaki tuhaf vakayı logdan kovalar, kök nedeni bulurum; donanımsız simülatörle tekrar üretirim.
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-### 💳 Kiosk, ödeme ve kart okuyucular
-WPF ve WinForms kiosk uygulamaları, POS terminal entegrasyonu, PC/SC ve USB üzerinden akıllı kart haberleşmesi; C# ve C++ cihaz kütüphaneleri.
+### 📱 Sahada çalışan uygulama yazarım
+.NET MAUI ve React Native ile telefondan cihaza doğrudan bağlanan, iş emri ve montaj kaydı işleyen, cihazı kablosuz güncelleyen uygulamalar. Kötü sinyale, uyuyan cihaza, yarıda kalan bağlantıya dayanıklı akışlar.
 
 </td>
 <td width="50%" valign="top">
 
-### 📡 IoT ve arka uç
-Sigfox, LoRaWAN ve BLE ağ geçitlerinden gelen ikili paketleri çözen .NET servisleri; kalıcı kuyruk, Modbus RTU/TCP ve MQTT katmanları, yönetim panelleri.
+### 🚀 Kendi kendini yöneten sistem kurarım
+İmzalı paketle kendini güncelleyen, başarısız olursa önceki sürüme dönen Windows servisleri; tek tıkla kurulum paketleri, sürüm etiketleme ve changelog disiplini. Sahaya çıktıktan sonra elle müdahale istemeyen yazılım.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 📡 IoT veri hattı kurarım
+Sigfox, LoRaWAN ve BLE ağ geçitlerinden gelen paketleri çözen, kalıcı kuyruğa alan ve bağlantı koptuğunda veriyi kaybetmeden teslim eden .NET servisleri; MQTT ve yönetim panelleri.
+
+</td>
+<td width="50%" valign="top">
+
+### 💳 Ödeme ve kiosk entegre ederim
+WPF/WinForms kiosk akışları, POS terminaliyle mesajlaşma, akıllı kart okuyucular, kart bakiye yükleme ve işlem geçmişi; ödeme senaryolarını donanımsız deneyen test araçları.
 
 </td>
 </tr>
@@ -68,30 +83,50 @@ Sigfox, LoRaWAN ve BLE ağ geçitlerinden gelen ikili paketleri çözen .NET ser
 
 ---
 
-## Teknolojiler
+## Nasıl çalışırım
 
-**Diller ve platformlar**<br>
-![C#](https://img.shields.io/badge/C%23-512BD4?style=flat-square&logo=dotnet&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![.NET MAUI](https://img.shields.io/badge/.NET%20MAUI-512BD4?style=flat-square&logo=dotnet&logoColor=white)
-![React Native](https://img.shields.io/badge/React%20Native-20232A?style=flat-square&logo=react&logoColor=61DAFB)
-![WPF](https://img.shields.io/badge/WPF%20%2F%20WinForms-0078D4?style=flat-square&logo=windows&logoColor=white)
+| | |
+|---|---|
+| ✅ **Önce doğruluk, sonra hız** | Birkaç saniyelik kazanç yerine yanlış karta yazılan tek bir kimliği önlemeyi seçerim. |
+| 🧪 **Kanıtsız değişiklik yok** | Akışı değiştiren her şey ayarla açılıp kapanır ve gerçek donanımda açık, kapalı ve hatalı durumda denenir. |
+| 🧩 **Kural tek yerde yaşar** | Bir protokol kuralı iki uygulamada kopya olarak durmaz; test edilmiş ortak pakete taşınır. |
+| 📦 **İş muallakta kalmaz** | Değişiklik commit, test, belge ve gerekiyorsa sürümle biter. |
 
-**Arka uç ve veri**<br>
-![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-512BD4?style=flat-square&logo=dotnet&logoColor=white)
-![Blazor](https://img.shields.io/badge/Blazor-5C2D91?style=flat-square&logo=blazor&logoColor=white)
+---
+
+## Kanıt: Orion Üretim Platformu
+
+> Şu an üzerinde çalıştığım, sayaç üretim hattını tek ekrandan yöneten sistem. Yukarıdaki kabiliyetlerin hepsi burada bir arada.
+
+- **5 kanallı paralel ST-LINK** ile STM32WB kartlarına aynı anda firmware, BLE yığını ve FUS yükleme
+- Her adımda kart UID'sini yeniden doğrulayan **kimlik ve Sigfox provisioning**
+- Sunucudan imzalı paket çekip **kendini güncelleyen istasyon ajanı** ve otomatik geri dönüş
+- Masaüstü, web ve mobil uygulamaların paylaştığı **ortak protokol paket ailesi**
+
+![C#](https://img.shields.io/badge/C%23-.NET%2010-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-Blazor-5C2D91?style=flat-square&logo=blazor&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
-![MQTT](https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white)
+![STM32](https://img.shields.io/badge/STM32WB-ST--LINK-03234B?style=flat-square&logo=stmicroelectronics&logoColor=white)
+![BLE](https://img.shields.io/badge/BLE-GATT-0082FC?style=flat-square&logo=bluetooth&logoColor=white)
 
-**Donanım ve protokoller**<br>
-![STM32](https://img.shields.io/badge/STM32-03234B?style=flat-square&logo=stmicroelectronics&logoColor=white)
+---
+
+## Araç kutusu
+
+<p>
+<img src="https://skillicons.dev/icons?i=cs,cpp,dotnet,ts,react,postgres,mongodb,docker,linux,windows,git,vscode&perline=12" alt="skills" />
+</p>
+
+![.NET MAUI](https://img.shields.io/badge/.NET%20MAUI-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![WPF](https://img.shields.io/badge/WPF%20%2F%20WinForms-0078D4?style=flat-square&logo=windows&logoColor=white)
+![Blazor](https://img.shields.io/badge/Blazor-5C2D91?style=flat-square&logo=blazor&logoColor=white)
+![MQTT](https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white)
 ![Bluetooth LE](https://img.shields.io/badge/Bluetooth%20LE-0082FC?style=flat-square&logo=bluetooth&logoColor=white)
 ![Sigfox](https://img.shields.io/badge/Sigfox-7B2CBF?style=flat-square)
 ![LoRaWAN](https://img.shields.io/badge/LoRaWAN-1A73E8?style=flat-square)
 ![Modbus](https://img.shields.io/badge/Modbus%20RTU%2FTCP-555555?style=flat-square)
 ![PC/SC](https://img.shields.io/badge/PC%2FSC%20Smart%20Card-555555?style=flat-square)
+![Inno Setup](https://img.shields.io/badge/Inno%20Setup-264de4?style=flat-square)
 
 ---
 
@@ -99,13 +134,13 @@ Sigfox, LoRaWAN ve BLE ağ geçitlerinden gelen ikili paketleri çözen .NET ser
 
 | Proje | Açıklama |
 |---|---|
-| [**hp-victus-cachyos-field-guide**](https://github.com/semiavci11/hp-victus-cachyos-field-guide) | HP Victus 16 + CachyOS: ekran kararması (Hall/LID) arızasının ve Linux'ta fan kontrolünün gerçek vaka notları. Türkçe ve İngilizce. |
+| [**hp-victus-cachyos-field-guide**](https://github.com/semiavci11/hp-victus-cachyos-field-guide) | Bir laptop arızasını donanım seviyesine kadar kovaladığım vaka notları: Hall/LID sensörü, flex kablo ve Linux'ta fan kontrolü. Türkçe ve İngilizce. |
 | [**Yakıt Hesabı**](https://semiavci11.github.io/yakithesabi-gizlilik/) | React Native ve TypeScript ile yazdığım, verilerini cihazda tutan yakıt ve enerji maliyeti hesaplayıcısı (Android). |
 
 ---
 
 <div align="center">
 
-<sub>Çoğu çalışmam şirket içi depolarda. Donanım entegrasyonu, üretim yazılımı veya .NET üzerine konuşmak isterseniz yazın.</sub>
+<sub>Çoğu çalışmam şirket içi depolarda. Donanımla konuşması gereken bir yazılımınız varsa yazın.</sub>
 
 </div>
